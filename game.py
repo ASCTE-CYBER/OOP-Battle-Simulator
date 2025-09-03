@@ -7,23 +7,29 @@ def main():
     print("༼ ᓄºل͟º ༽ᓄ   ᕦ(ò_óˇ)ᕤ")
 
     # Create a hero
-    hero = Hero("Aragorn")
+    hero = Hero("Hornet")
 
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
-    goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
+    goblins = [Goblin(f"Spiny Husk {i+1}") for i in range(3)]
 
     # Keep track of how many goblins were defeated
     defeated_goblins = 0
+    total_damage = 0
+    rounds = 0
 
     # Battle Loop 
     while hero.is_alive() and any(goblin.is_alive() for goblin in goblins):
         print("\nNew Round!")
+        rounds += 1
         
         # Hero's turn to attack
         target_goblin = random.choice([goblin for goblin in goblins if goblin.is_alive()])
         damage = hero.strike()
-        print(f"Hero attacks {target_goblin.name} for {damage} damage!")
+        total_damage += damage
+        print(f"{hero.name} attacks {target_goblin.name} for {damage} damage!")
         target_goblin.take_damage(damage)
+        
+
 
         # Check if the target goblin was defeated
         if not target_goblin.is_alive():
@@ -33,9 +39,11 @@ def main():
         # Goblins' turn to attack
         for goblin in goblins:
             if goblin.is_alive():
+                total_damage += damage
                 damage = goblin.attack()
                 print(f"{goblin.name} attacks hero for {damage} damage!")
                 hero.receive_damage(damage)
+                
 
     # Determine outcome
     if hero.is_alive():
