@@ -22,6 +22,7 @@ class Hero:
     
 
     def strike(self):
+        return random.randint(20, self.attack_power)
         # TODO Implement the hero's attack logic. It could be stronger or more consistent than a goblin's.
     
     def receive_damage(self, damage):
