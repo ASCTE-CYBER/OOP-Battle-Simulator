@@ -13,7 +13,7 @@ class Hero:
     """
     
     def __init__(self, name):
-        self.name = "LoserforLife"
+        self.name = name
         self.health = 150
         self.attack_power = random.randint(5, 15)
         #TODO Set the hero's name.
