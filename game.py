@@ -12,8 +12,10 @@ def main():
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
     goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
 
-    # Keep track of how many goblins were defeated
+    # Keep track of stats. how many goblins were defeated
     defeated_goblins = 0
+    total_damage=0
+    rounds=0
 
     # Battle Loop 
     while hero.is_alive() and any(goblin.is_alive() for goblin in goblins):
@@ -34,6 +36,7 @@ def main():
         for goblin in goblins:
             if goblin.is_alive():
                 damage = goblin.attack()
+                total_damage += damage
                 print(f"{goblin.name} attacks hero for {damage} damage!")
                 hero.receive_damage(damage)
 
