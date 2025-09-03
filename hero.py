@@ -19,6 +19,7 @@ class Hero:
         self.name= name
         self.health= 120
         self.attack_power = 10
+        print(name)
     
 
     def strike(self):
