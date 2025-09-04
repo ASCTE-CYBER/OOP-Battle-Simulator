@@ -18,7 +18,7 @@ class Hero:
         self.health=120
         self.armour= 50 
         self.attack_power = random.randint(50, 70)
-        self.swordStrength = random.randint(41,67)
+        self.ExtraSwordStrength = random.randint(41,67)
         #TODO Set the hero's health. You might give the hero more health than a goblin.
         #TODO Set the hero's attack power. Should it be more consistent than the goblin's?
     
@@ -27,7 +27,7 @@ class Hero:
         if self.health<50:
             return random.randint(1, self.attack_power)
         else:
-             return self.swordStrength
+             return self.ExtraSwordStrength
         
     
 

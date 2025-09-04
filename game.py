@@ -49,6 +49,6 @@ def main():
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")
     print("Battle Summary:")
     print(f"\nTotal damage dealt: {total_damage}")
-    print(f"\ntotal rounds surrviced: {total_rounds}")
+    print(f"\ntotal rounds surrvived: {total_rounds}")
 if __name__ == "__main__":
     main()
