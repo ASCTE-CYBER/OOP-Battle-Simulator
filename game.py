@@ -1,16 +1,16 @@
 import random
 from goblin import Goblin
 from hero import Hero
-
+from Boss import Boss
 def main():
     print("Welcome to the Battle Arena!")
     print("༼ ᓄºل͟º ༽ᓄ   ᕦ(ò_óˇ)ᕤ")
 
     # Create a hero
     hero = Hero("Aragorn")
-
+    
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
-    goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
+    goblins = [Goblin(f"Goblin {i+1}", "green") for i in range(3)]
 
     # Keep track of how many goblins were defeated
     defeated_goblins = 0
@@ -33,6 +33,9 @@ def main():
         if not target_goblin.is_alive():
             defeated_goblins += 1
             print(f"{target_goblin.name} has been defeated!")
+            if defeated_goblins==3:
+                Boss()
+
 
         # Goblins' turn to attack
         for goblin in goblins:

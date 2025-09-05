@@ -1,6 +1,6 @@
 import random
-
-class Goblin:
+from Enemy import Enemy
+class Goblin(Enemy):
     """
     This is our goblin blueprint 
     
@@ -9,21 +9,6 @@ class Goblin:
         health: The current health value 
         attack_power: How much health will be drained from opponent if hit
     """
-    def __init__(self, name):
-        self.name = name
-        self.health = 100
-        self.attack_power = random.randint(5, 15)
-
-    def attack(self):
-        return random.randint(1, self.attack_power)
-
-    def take_damage(self, damage):
-        self.health -= damage
-        if self.health<0:
-            is_alive=False
-            return False
-        # TODO We should prevent the goblins health from going into the NEGATIVE
-        print(f"{self.name} takes {damage} damage. Health is now {self.health}.")
-
-    def is_alive(self):
-        return self.health > 0
+    def __init__(self, name, color):
+        super().__init__(name)
+        self.color=color
