@@ -1,6 +1,7 @@
 import random
 from goblin import Goblin
 from hero import Hero
+from boss import The_Hunter
 
 def does_crit():
     possability = random.randint(1,999999999)
@@ -17,7 +18,7 @@ def main():
     hero = Hero("CREATURE")
 
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
-    goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
+    goblins = [Goblin(f"Goblin {i+1}", "green") for i in range(3)]
 
     # Keep track of how many goblins were defeated
     defeated_goblins = 0 
@@ -29,7 +30,7 @@ def main():
         # Hero's turn to attack
         target_goblin = random.choice([goblin for goblin in goblins if goblin.is_alive()])
         damage = hero.strike(does_crit())
-        print(f"Hero attacks {target_goblin.name} for {damage} damage!")
+        print(f"{hero.name} attacks {target_goblin.name} for {damage} damage!")
         target_goblin.take_damage(damage)
 
         # Check if the target goblin was defeated
@@ -49,6 +50,16 @@ def main():
         print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
     else:
         print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
+
+    print("HUNTER FOUND")
+    Hunter = The_Hunter("Jeff")
+    while hero.is_alive() and Hunter.is_alive:
+        damage = hero.stike
+        Hunter.take_damage(damage)
+        damage = Hunter.attack
+        hero.receive_damage(damage)
+    if hero.is_alive:
+        
 
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")

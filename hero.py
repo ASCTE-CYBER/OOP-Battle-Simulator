@@ -19,13 +19,6 @@ class Hero:
         self.defence = random.randint(1,100)
         self.attack_power = 9999
     
-    def does_crit():
-        possability = random.randint(1,999999999)
-        if possability == 72:
-            return True
-        else:
-            return False
-    
 
     def strike(self, crit):
         if crit == True:
