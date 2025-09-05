@@ -1,6 +1,7 @@
 import random
 from goblin import Goblin
 from hero import Hero
+from boss_skeleton import SkeletonBoss
 
 def main():
     print("Welcome to the Battle Arena!")
@@ -10,7 +11,7 @@ def main():
     hero = Hero("Aragorn")
 
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
-    goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
+    goblins = [Goblin(f"Goblin {i+1}", "green") for i in range(3)]
 
     # Keep track of how many goblins were defeated
     defeated_goblins = 0
@@ -27,7 +28,7 @@ def main():
         total_damage += damage
         print(f"Hero attacks {target_goblin.name} for {damage} damage!")
         target_goblin.take_damage(damage)
-
+        
         # Check if the target goblin was defeated
         if not target_goblin.is_alive():
             defeated_goblins += 1
@@ -45,10 +46,19 @@ def main():
         print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
     else:
         print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
-
+    
+    if hero.is_alive:
+        print("boss fight time!!")
+        skeleton = SkeletonBoss("Gumbo")
+        while hero.is_alive() and skeleton.is_alive():
+            damage = hero.strike()
+            skeleton.take_damage(damage)
+            damage = hero.strike()
+            skeleton.take_damage(damage)
+            
+    
     print(f"\nTotal damage dealt: {total_damage}")
     print(f"\nTotal rounds fought: {rounds}")
-
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")
 
