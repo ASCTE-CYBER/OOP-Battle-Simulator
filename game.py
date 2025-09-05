@@ -58,9 +58,11 @@ def main():
             damage=hero.strike()
             brute.take_damage
             print(f"{hero.name} attacks {brute.name} for {damage} damage!")
-            damage=brute.attack()
-            hero.receive_damage()
-            print(f"{brute.name} attacks {hero.name} for {damage} damage!")
+            if hero.is_alive():
+                damage=brute.attack()
+                hero.receive_damage
+                print(f"{brute.name} attacks {hero.name} for {damage} damage!")
+            return hero.is_alive()
             
 
 
