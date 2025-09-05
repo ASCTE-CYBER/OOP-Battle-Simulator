@@ -7,6 +7,9 @@ def main():
     print("Welcome to the Battle Arena!")
     print("༼ ᓄºل͟º ༽ᓄ   ᕦ(ò_óˇ)ᕤ")
 
+    # Create a boss
+    boss = Hero("Aragorn")
+
     # Create a hero
     hero = Hero("Aragorn")
 
