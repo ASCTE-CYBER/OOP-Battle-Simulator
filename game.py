@@ -1,6 +1,7 @@
 import random
 from goblin import Goblin
 from hero import Hero
+from enemy import Enemy
 
 def main():
     print("Welcome to the Battle Arena!")
@@ -25,7 +26,7 @@ def main():
         target_goblin = random.choice([goblin for goblin in goblins if goblin.is_alive()])
         damage = hero.strike()
         total_damage += total_damage
-        print(f"Hero attacks {target_goblin.name} for {damage} damage!")
+        print(f"{hero.name} attacks {target_goblin.name} for {damage} damage!")
         target_goblin.take_damage(damage)
 
         # Check if the target goblin was defeated
@@ -39,15 +40,29 @@ def main():
                 damage = goblin.attack()
                 print(f"{goblin.name} attacks hero for {damage} damage!")
                 hero.receive_damage(damage)
-
+        rounds = rounds + 1
     # Determine outcome
     if hero.is_alive():
-        print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
+        print(f"\nAfter "+ str(rounds) +" rounds, The hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
     else:
-        print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
+        print(f"\nAfter "+ str(rounds) +" rounds, The hero has been defeated. Game Over. (｡•́︿•̀｡)")
 
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")
+
+
+    if hero.is_alive:
+        print("Boss Fight Time!!")
+        brute=Enemy("MegaKnight")
+        while hero.is_alive and brute.is_alive():
+            damage=hero.strike()
+            brute.take_damage
+            print(f"{hero.name} attacks {brute.name} for {damage} damage!")
+            damage=brute.attack()
+            hero.receive_damage()
+            print(f"{brute.name} attacks {hero.name} for {damage} damage!")
+            
+
 
 if __name__ == "__main__":
     main()
