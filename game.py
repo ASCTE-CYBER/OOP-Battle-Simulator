@@ -33,10 +33,7 @@ def main():
         if not target_goblin.is_alive():
             defeated_goblins += 1
             print(f"{target_goblin.name} has been defeated!")
-            if defeated_goblins==3:
-                Boss()
-
-
+            
         # Goblins' turn to attack
         for goblin in goblins:
             if goblin.is_alive():
@@ -44,6 +41,21 @@ def main():
                 print(f"{goblin.name} attacks hero for {damage} damage!")
                 hero.receive_damage(damage)
 
+    if hero.is_alive():
+        print("Boss Time!")
+        BBEG = Boss("BBEG")
+        while hero.is_alive() and BBEG.is_alive:
+            damage=hero.strike()
+            BBEG.take_damage(damage)
+
+            damage=BBEG.attack()
+            hero.take_damage(damage)
+        if hero.is_alive():
+            print(f"\nThe hero has defeated all the goblins and the boss! ༼ ᕤ◕◡◕ ༽ᕤ")
+            return
+        else:
+            print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")    
+            return
     # Determine outcome
     if hero.is_alive():
         print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")

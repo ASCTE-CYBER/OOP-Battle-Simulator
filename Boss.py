@@ -3,11 +3,12 @@ import random
 class Boss(Enemy):
     def __init__(self, name,):
         super().__init__(name)
-        self.attack_power=20
-        self.health=360
+        self.attack_power=random.randint(10,20)
+        self.health=350
     def attack(self):
         if self.health<180:
-            while Enemy.is_alive == True:
-                self.attack_power=self.attack_power+1
+        if self.health<180:      
+            self.attack_power=self.attack_power+10
+        return self.attack_power
 
     
