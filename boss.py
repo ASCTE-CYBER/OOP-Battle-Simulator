@@ -13,3 +13,4 @@ class bossgoblin(Enemy):
             self.attack_power=65
         elif self.health<50:
             self.attack_power=80
+        return self.attack_power
