@@ -28,6 +28,11 @@ def main():
         # Check if the target goblin was defeated
         if not target_goblin.is_alive():
             defeated_goblins += 1
+<<<<<<< Updated upstream
+=======
+            if target_goblin.name == "Sparky":
+                print("Boss battle complete, Enemies eliminated (ง'̀-'́)ง")
+>>>>>>> Stashed changes
             print(f"{target_goblin.name} has been defeated!")
 
         # Goblins' turn to attack
