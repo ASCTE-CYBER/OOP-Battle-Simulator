@@ -37,6 +37,24 @@ def main():
                 print(f"{goblin.name} attacks hero for {damage} damage!")
                 hero.receive_damage(damage)
 
+<<<<<<< Updated upstream
+=======
+
+    if hero.is_alive():
+        #boss battle
+        basilisk = Basilisk("Basilisk")
+        print("boss battle")
+        while hero.is_alive() and basilisk.is_alive():
+            damage = hero.strike()
+            basilisk.take_damage(damage)
+            damage = basilisk.attack()
+            hero.receive_damage(damage)
+        if hero.is_alive():
+            print(f"\nThe hero has defeated the boss! ༼ ᕤ◕◡◕ ༽ᕤ")
+        else:
+            print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
+
+>>>>>>> Stashed changes
     # Determine outcome
     if hero.is_alive():
         print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
