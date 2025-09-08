@@ -15,7 +15,7 @@ class Hero:
     
     def __init__(self, name):
         self.name=name
-        self.health=120
+        self.health=670
         self.armour= 50 
         self.attack_power = random.randint(50, 70)
         self.ExtraSwordStrength = random.randint(41,67)
