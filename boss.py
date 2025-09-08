@@ -9,4 +9,4 @@ class False_Knight(Enemy):
         self.attack_power = random.randint(20, 35)
 
     def attack(self):
-        return random.randint(15, self.attack_power * 2)
+        return random.randint(15, self.attack_power + 5)

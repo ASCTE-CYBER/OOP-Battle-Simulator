@@ -52,6 +52,8 @@ def main():
     else:
         print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
 
+
+
     # Final tally of goblins defeated
     print(f"\nTotal husks defeated: {defeated_goblins} / {len(goblins)}")
 
@@ -62,13 +64,13 @@ def main():
         while hero.is_alive() and boss.is_alive():
             damage = hero.strike()
             boss.take_damage(damage)
-            damage = boss.strike()
-            hero.take_damage(damage)
+            damage = boss.attack()
+            hero.receive_damage(damage)
 
     if hero.is_alive():
-        print(f"\nThe hero has defeated all the husks! ༼ ᕤ◕◡◕ ༽ᕤ")
+        print(f"\nHornet has defeated all the husks! ༼ ᕤ◕◡◕ ༽ᕤ")
     else:
-        print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
+        print(f"\nHornet has been defeated. Game Over. (｡•́︿•̀｡)")
     
         
 
