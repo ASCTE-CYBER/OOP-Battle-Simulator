@@ -7,17 +7,21 @@ def main():
     print("༼ ᓄºل͟º ༽ᓄ   ᕦ(ò_óˇ)ᕤ")
 
     # Create a hero
-    hero = Hero("Aragorn")
+    hero = Hero("Mega Knight")
 
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
-    goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
+    goblins = [Goblin(f"Goblin {i+1}") for i in range(5)]
 
     # Keep track of how many goblins were defeated
     defeated_goblins = 0
 
+    rounds = 0
+    hero_damage = 0
+
     # Battle Loop 
     while hero.is_alive() and any(goblin.is_alive() for goblin in goblins):
         print("\nNew Round!")
+        rounds = rounds + 1
         
         # Hero's turn to attack
         target_goblin = random.choice([goblin for goblin in goblins if goblin.is_alive()])
@@ -36,6 +40,7 @@ def main():
                 damage = goblin.attack()
                 print(f"{goblin.name} attacks hero for {damage} damage!")
                 hero.receive_damage(damage)
+                hero_damage += damage
 
     # Determine outcome
     if hero.is_alive():
@@ -43,8 +48,11 @@ def main():
     else:
         print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
 
+
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")
+    print(f"\nHero survived",str(rounds),"rounds")
+    print(f"\nMega knight Damage taken: ",str(hero_damage))
 
 if __name__ == "__main__":
     main()
