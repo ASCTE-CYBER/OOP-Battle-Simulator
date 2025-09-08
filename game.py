@@ -1,16 +1,17 @@
 import random
 from goblin import Goblin
 from hero import Hero
+from boss import bigBoss
 
 def main():
     print("Welcome to the Battle Arena!")
     print("༼ ᓄºل͟º ༽ᓄ   ᕦ(ò_óˇ)ᕤ")
 
     # Create a hero
-    hero = Hero("Aragorn")
+    hero = Hero("Colleen")
 
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
-    goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
+    goblins = [Goblin(f"Goblin {i+1}", "green") for i in range(3)]
 
     # Keep track of how many goblins were defeated
     defeated_goblins = 0
@@ -42,6 +43,18 @@ def main():
         print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
     else:
         print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
+
+    print("Time for the boss")
+    while hero.is_alive() and bigBoss.is_alive():
+        damage = hero.strike()
+        bigBoss.take_damage(damage)
+        damage = bigBoss.attack()
+        hero.receive_damage(damage)
+
+    if hero.is_alive():
+        print("we beat the boss")
+    else:
+        print("we lost against the boss")
 
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")
