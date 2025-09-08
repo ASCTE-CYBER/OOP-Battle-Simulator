@@ -1,28 +1,35 @@
+import random
 class Hero:
-    """
-    This is our hero blueprint.
-    
-    O=('-'Q)
-
-    Attributes:
-        name: The name of our adventurer.
-        hp: The current health value.
-        strength: The amount of damage the hero can deal.
-        (Bonus) defence: A hero's ability to reduce incoming damage.
-        (Bonus) special_ability: A unique ability the hero can use.
-    """
-    
     def __init__(self, name):
-        #TODO Set the hero's name.
-        #TODO Set the hero's health. You might give the hero more health than a goblin.
-        #TODO Set the hero's attack power. Should it be more consistent than the goblin's?
-    
+        self.name = name
+        self.hp = 100
+        self.strength = random.randint(10, 20)
+        self.atium_store = random.randint(56,120)
+        self.defence = 5
+
+    def burn_atium(self):
+        if self.atium_store != 0:
+            self.atium_store -= 1
+        if self.atium_store == 1:
+            print(f"{self.name} has {self.atium_store} second of atium left")
+        elif self.atium_store != 0:
+            print(f"{self.name} has {self.atium_store} seconds of atium left")
+        else:
+            print(f"{self.name} is out of atium!")
 
     def strike(self):
-        # TODO Implement the hero's attack logic. It could be stronger or more consistent than a goblin's.
+        if self.atium_store > 0:
+            return self.strength
+        else:
+            return random.randint(1, self.strength)
     
     def receive_damage(self, damage):
-        # TODO Implement take_damage
-        # TODO We should prevent health from going into the NEGATIVE
-    
-    #TODO define is_alive
+        if self.atium_store == 0:
+            if not((self.hp - damage) > self.hp):
+                self.hp -= abs(damage - self.defence)
+                print(f"{self.name} takes {damage} damage. Health is now {self.hp}.")
+        else:
+            print(f"{self.name} burns atium, dodging the attack and taking no damage")
+
+    def is_alive(self):
+        return self.hp > 0
