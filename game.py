@@ -57,9 +57,9 @@ def main():
             hero.receive_damage(damage)
     
     if hero.is_alive():
-        print(f"\nThe hero has the boss! ༼ ᕤ◕◡◕ ༽ᕤ")
+        print(f"\nThe hero has beat the boss! ༼ ᕤ◕◡◕ ༽ᕤ")
     else:
-        print(f"\nthe bos beat the hero. Game Over. (｡•́︿•̀｡)")
+        print(f"\nthe boss beat the hero. Game Over. (｡•́︿•̀｡)")
 
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")
