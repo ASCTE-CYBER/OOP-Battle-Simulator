@@ -18,7 +18,7 @@ def main():
     hero = Hero("CREATURE")
 
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
-    goblins = [Goblin(f"Goblin {i+1}", "green") for i in range(3)]
+    goblins = [Goblin(f"Wolf {i+1}", "green") for i in range(3)]
 
     # Keep track of how many goblins were defeated
     defeated_goblins = 0 
