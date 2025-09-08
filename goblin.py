@@ -11,6 +11,7 @@ class Goblin:
     """
     def __init__(self, name):
         self.name = name
+        self.size = 41
         self.health = 100
         self.attack_power = random.randint(5, 15)
 
