@@ -16,15 +16,15 @@ class Hero:
     
     def __init__(self, name):
         self.name = name
-        self.health = 150
+        self.health = 200
         self.attack_power = random.randint(20, 30)
     
 
     def strike(self):
-        return random.randint(1, self.attack_power)
+        return random.randint(15, self.attack_power)
     
     def receive_damage(self, damage):
-        
+
         self.health -= damage
         if self.health < 0:
             self.health = 0
@@ -33,9 +33,5 @@ class Hero:
     def is_alive(self):
         return self.health > 0
     
-    def block(self, damage):
-        if damage < 10:
-            damage = 0
-        print(f"{self.name} takes {damage} damage since they blocked it. Health is now {self.health}.")
 
 
