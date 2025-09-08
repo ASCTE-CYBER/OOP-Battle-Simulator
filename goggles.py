@@ -8,8 +8,8 @@ class Goggles(Enemy):
         self.health = 200
         self.attack_power = random.randint (10, 25)
 
-    def heal(self, health):
-        chance = random.randint(1,4)
+    def heal(self):
+        chance = random.randint(1,6)
         if chance == 1:
             self.health == self.health + 25
         

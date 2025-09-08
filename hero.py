@@ -16,8 +16,8 @@ class Hero:
     
     def __init__(self, name):
         self.name = name
-        self.hp = 160
-        self.attack_power = random.randint(22.5, 60)
+        self.hp = 260
+        self.attack_power = random.randint(22, 60)
     
 
     def strike(self):

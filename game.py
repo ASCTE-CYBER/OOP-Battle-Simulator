@@ -47,12 +47,16 @@ def main():
     print("Goggles the Evilest Goblin is Approaching!")
 
     #Create Goggles the boss goblin
-    Goggles = [Goggles(f"Goggles the Goblin")]
-    while hero.is_alive()and Goggles.is_alive:
+    goggles = Goggles(f"Goggles the Goblin")
+    while hero.is_alive()and goggles.is_alive():
         damage = hero.strike()
-        Goggles.take_damage(damage)
-        damage = Goggles.attack()
-        hero.recieve_damage(damage)
+        goggles.take_damage(damage)
+        damage = goggles.attack()
+        hero.receive_damage(damage)
+        goggles.heal()
+        if not goggles.is_alive():
+            print(f"Goggles takes {damage} damage. Goggles is now dead.")
+            print("You Beat Goggles!")
 
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")

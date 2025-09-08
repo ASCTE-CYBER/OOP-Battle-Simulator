@@ -18,10 +18,12 @@ class Enemy:
         return random.randint(1, self.attack_power)
 
     def take_damage(self, damage):
-        if (self.health <= -1):
+        if (self.health <= 0):
             print(f"{self.name} takes {damage} damage. {self.name} is now dead")
+            self.health = 0
         else:
             print(f"{self.name} takes {damage} damage. Health is now {self.health}.")
+            self.health = self.health - damage
 
 
     def is_alive(self):
