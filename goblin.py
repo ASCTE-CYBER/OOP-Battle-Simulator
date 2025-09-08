@@ -1,5 +1,6 @@
-import random
+from enemy import enemy
 
+<<<<<<< Updated upstream
 class Goblin:
     """
     This is our goblin blueprint 
@@ -24,3 +25,9 @@ class Goblin:
 
     def is_alive(self):
         return self.health > 0
+=======
+class Goblin(enemy):
+    def __init__(self, name, color ):
+            super().__init__(name)
+            self.color = color
+>>>>>>> Stashed changes
