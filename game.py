@@ -1,27 +1,33 @@
 import random
 from goblin import Goblin
 from hero import Hero
+from boss import Boss_Baby
 
 def main():
     print("Welcome to the Battle Arena!")
     print("༼ ᓄºل͟º ༽ᓄ   ᕦ(ò_óˇ)ᕤ")
 
     # Create a hero
-    hero = Hero("Aragorn")
+    hero = Hero("Thor")
 
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
-    goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
+    goblins = [Goblin(f"Goblin {i+1}", "baby poo green") for i in range(3)]
 
     # Keep track of how many goblins were defeated
     defeated_goblins = 0
+    #keep track of  rounds
+    rounds = 0
+    hero_damage = 0
 
     # Battle Loop 
     while hero.is_alive() and any(goblin.is_alive() for goblin in goblins):
         print("\nNew Round!")
-        
+        rounds += 1
+
         # Hero's turn to attack
         target_goblin = random.choice([goblin for goblin in goblins if goblin.is_alive()])
         damage = hero.strike()
+        hero_damage += damage
         print(f"Hero attacks {target_goblin.name} for {damage} damage!")
         target_goblin.take_damage(damage)
 
@@ -37,14 +43,36 @@ def main():
                 print(f"{goblin.name} attacks hero for {damage} damage!")
                 hero.receive_damage(damage)
 
+
+    if hero.is_alive():
+        boss_Baby = Boss_Baby("Boss Baby")
+        print("\Boss Round!")
+    while hero.is_alive() and any(boss_Baby.is_alive() for goblin in goblins):
+        damage = hero.strike()
+        boss_Baby.take_damage(damage)
+        damage = boss_Baby.attack()
+        hero.receive_damage(damage)
+ 
+        if hero.is_alive():
+            print(f"\nThe hero has been defeated by the boss!")
+        else:
+            print(f"\nThe hero has been defeated. Game Over.")
+
     # Determine outcome
     if hero.is_alive():
         print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
     else:
         print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
+    if hero.is_alive():
+        print("BOSS TIME")
+        Boss_Baby
+
 
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")
+    print("Battle Summary")
+    print(f"\nTotal damage: {hero_damage}")
+    print(f"\nRounds survived: {rounds}")
 
 if __name__ == "__main__":
     main()
