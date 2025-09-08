@@ -65,11 +65,15 @@ def main():
             damage = hero.strike()
             boss.take_damage(damage)
             print("Just a scratch")
+            if boss.health == (1-50):
+                print("BIG IRISH UPGRADE YOU SMALL PATHETIC CHILD")
+                print("HEALTH IS NOW 50 POINTS HIGHER")
+                boss.health += 50
             damage = boss.attack()
             hero.receive_damage(damage)
         
         if hero.is_alive():
-            print("Hero somehow managed to kill the GINGER")
+            print("Hero managed to kill the GINGER")
             
         else:
             print("HERO IS DEAD")

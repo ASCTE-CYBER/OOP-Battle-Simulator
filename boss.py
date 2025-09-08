@@ -10,10 +10,6 @@ class Big_Irish_Man(ENEMY):
 
     def attack(self):
         self.attack_power = random.randint(3, 50)
-        if self.health < 12:
-            print("BIG IRISH UPGRADE YOU SMALL PATHETIC CHILD")
-            print("HEALTH IS NOW 50 POINTS HIGHER")
-            self.health = 50
         return random.randint(1, self.attack_power)
 
 
