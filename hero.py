@@ -20,7 +20,13 @@ class Hero:
 
     def strike(self):
         # TODO Implement the hero's attack logic. It could be stronger or more consistent than a goblin's.
+<<<<<<< Updated upstream
     
+=======
+        damage = random.randint(10, self.power)
+        return damage
+        
+>>>>>>> Stashed changes
     def receive_damage(self, damage):
         # TODO Implement take_damage
         # TODO We should prevent health from going into the NEGATIVE
