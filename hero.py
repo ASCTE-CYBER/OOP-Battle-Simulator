@@ -1,3 +1,5 @@
+import random
+
 class Hero:
     """
     This is our hero blueprint.
@@ -15,7 +17,7 @@ class Hero:
     def __init__(self, name):
         self.name = name
         self.hp = 160
-        self.attack_power = 22.5
+        self.attack_power = random.randint(22.5, 60)
     
 
     def strike(self):
@@ -23,10 +25,11 @@ class Hero:
     
     def receive_damage(self, damage):
         self.hp -= damage
-        if (self.health <= -1):
+        if (self.hp <= -1):
             print(f"{self.name} takes {damage} damage. {self.name} is now dead")
         else:
             print(f"{self.name} takes {damage} damage. Health is now {self.hp}.")
     
     def is_alive(self):
         return self.hp > 0
+    
