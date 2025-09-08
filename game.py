@@ -49,7 +49,7 @@ def main():
     if hero.is_alive():
         print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
     else:
-        print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
+        print(f"\nThe hero has been defeated. Game Over blaeg. (｡•́︿•̀｡)")
 
     print("HUNTER FOUND")
     Hunter = The_Hunter("Jeff")
