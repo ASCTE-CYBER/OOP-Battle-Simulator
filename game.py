@@ -71,7 +71,6 @@ def main():
             total_damage += damage
             print(f"{hero.name} attacks {boss.name} for {damage} damage!")
             boss.take_damage(damage)
-
             if boss.is_alive():
                 damage = boss.attack()
                 total_damage += damage
