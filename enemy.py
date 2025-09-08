@@ -18,7 +18,7 @@ class Enemy:
         return random.randint(1, self.attack_power)
 
     def take_damage(self, damage):
-        self.health -= damage
+        self.health = int(self.health) - int(damage)
         if self.health <= 0:
             print(f"{self.name} is dead!")
         else:

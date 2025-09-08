@@ -53,13 +53,24 @@ def main():
 
     print("HUNTER FOUND")
     Hunter = The_Hunter("Jeff")
-    while hero.is_alive() and Hunter.is_alive:
-        damage = hero.stike
-        Hunter.take_damage(damage)
-        damage = Hunter.attack
-        hero.receive_damage(damage)
-    if hero.is_alive:
-        
+    is_here = True
+    while hero.is_alive() and Hunter.is_alive() and is_here == True:
+        damage = Hunter.attack()
+        if damage == False:
+            is_here = False
+        else: 
+            print(f"{Hunter.name} attacks hero for {damage} damage!")
+            hero.receive_damage(damage)
+            damage = hero.strike(does_crit())
+            print(f"{hero.name} attacks hero for {damage} damage!")
+            Hunter.take_damage(damage)
+
+    if is_here == False:
+        print(f"The hunter ran")
+    elif hero.is_alive:
+        print("The hunter was devoured")
+    else:
+        print(f"{hero.name} has retreated")
 
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")

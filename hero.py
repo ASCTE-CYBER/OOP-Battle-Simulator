@@ -27,8 +27,9 @@ class Hero:
             return random.randint(100,self.attack_power)
     
     def receive_damage(self, damage):
-        damage_taken = damage - self.defence
-        self.health = self.health - damage_taken
+        if damage >= 1:
+            damage_taken = damage - self.defence
+            self.health = self.health - damage_taken
         if self.health <= 0:
             print(f"{self.name} is dead!")
         else:
