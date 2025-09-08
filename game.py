@@ -1,6 +1,7 @@
 import random
 from goblin import Goblin
 from hero import Hero
+from boss import Boss_Baby
 
 def main():
     print("Welcome to the Battle Arena!")
@@ -10,7 +11,7 @@ def main():
     hero = Hero("Thor")
 
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
-    goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
+    goblins = [Goblin(f"Goblin {i+1}", "baby poo green") for i in range(3)]
 
     # Keep track of how many goblins were defeated
     defeated_goblins = 0
@@ -22,7 +23,7 @@ def main():
     while hero.is_alive() and any(goblin.is_alive() for goblin in goblins):
         print("\nNew Round!")
         rounds += 1
-        
+
         # Hero's turn to attack
         target_goblin = random.choice([goblin for goblin in goblins if goblin.is_alive()])
         damage = hero.strike()
@@ -42,11 +43,29 @@ def main():
                 print(f"{goblin.name} attacks hero for {damage} damage!")
                 hero.receive_damage(damage)
 
+
+    if hero.is_alive():
+        boss_Baby = Boss_Baby("Boss Baby")
+        print("\Boss Round!")
+    while hero.is_alive() and any(boss_Baby.is_alive() for goblin in goblins):
+        damage = hero.strike()
+        boss_Baby.take_damage(damage)
+        damage = boss_Baby.attack()
+        hero.receive_damage(damage)
+ 
+        if hero.is_alive():
+            print(f"\nThe hero has been defeated by the boss!")
+        else:
+            print(f"\nThe hero has been defeated. Game Over.")
+
     # Determine outcome
     if hero.is_alive():
         print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
     else:
         print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
+    if hero.is_alive():
+        print("BOSS TIME")
+        Boss_Baby
 
 
     # Final tally of goblins defeated
