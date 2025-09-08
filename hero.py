@@ -26,6 +26,10 @@ class Hero:
         return random.randint(1, self.attack_power) + 10
         # TODO Implement the hero's attack logic. It could be stronger or more consistent than a goblin's.
     
+    def heal(self):
+        heal=random.randint(1,10)
+        self.health=self.health+(heal/2)
+    
     def receive_damage(self, damage):
         turnH=True
         while self.health>=0 and turnH==True:
