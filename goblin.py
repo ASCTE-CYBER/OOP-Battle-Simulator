@@ -1,7 +1,7 @@
 import random
-from enemy import Enemy
+from enemy import enemy
 
-class Goblin(Enemy):
+class Goblin(enemy):
     """
     This is our goblin blueprint 
     
@@ -11,6 +11,6 @@ class Goblin(Enemy):
         attack_power: How much health will be drained from opponent if hit
     """
     def __init__(self, name, color):
-        super()._init_(name)
+        super().__init__(name)
         self.color = color
         

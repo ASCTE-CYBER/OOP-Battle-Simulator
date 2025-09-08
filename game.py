@@ -1,6 +1,7 @@
 import random
 from goblin import Goblin
 from hero import Hero
+from boss import SlimeBoss
 
 def main():
     print("Welcome to the Battle Arena!")
@@ -42,6 +43,21 @@ def main():
         print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
     else:
         print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
+
+
+    if hero.is_alive():
+        print("Slime Boss is ready to fight!")
+        slime = SlimeBoss("Slime")
+        while hero.is_alive() and slime.is_alive():
+            damage = hero.strike()
+            slime.take_damage(damage)
+            damage = slime.strike()
+            hero.receive_damage(damage)
+
+        if hero.is_alive():
+            print(f"\nThe hero has defeated the Slime Boss!༼ ᕤ◕◡◕ ༽ᕤ")
+        else:
+            print(f"\nThe slime Boss has defeated the Hero. Game over (｡•́︿•̀｡)")
 
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")
