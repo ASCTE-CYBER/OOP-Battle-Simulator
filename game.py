@@ -45,6 +45,14 @@ def main():
 
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")
+<<<<<<< Updated upstream
+=======
+    print("Battle Summary: ")
+    print(f"\n Total Damage: {hero_damage}")
+    print(f"\n Rounds Survived: {rounds}")
+    print("hope you had fun!")
+
+>>>>>>> Stashed changes
 
 if __name__ == "__main__":
     main()
