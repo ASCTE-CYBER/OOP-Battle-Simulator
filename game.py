@@ -1,6 +1,7 @@
 import random
 from goblin import Goblin
 from hero import Hero
+from boss import Boss
 
 def main():
     print("Welcome to the Battle Arena!")
@@ -12,10 +13,18 @@ def main():
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
     goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
 
+
     # Keep track of how many goblins were defeated
     defeated_goblins = 0
+<<<<<<< Updated upstream
 
     # Battle Loop 
+=======
+    total_damage = 0
+    rounds_survived = 0
+
+    # Battle Loop
+>>>>>>> Stashed changes
     while hero.is_alive() and any(goblin.is_alive() for goblin in goblins):
         print("\nNew Round!")
         
@@ -39,9 +48,25 @@ def main():
 
     # Determine outcome
     if hero.is_alive():
+<<<<<<< Updated upstream
         print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
+=======
+        print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ Time for the boss fight!")
+        boss = Boss("Super hard boss")
+        hero.health = 150
+        while hero.is_alive() and boss.is_alive():
+            damage = hero.strike()
+            boss.take_damage(damage)
+            damage = boss.attack()
+            defense = random.randint(1,5)
+            hero.receive_damage(damage, defense)
+        if hero.is_alive():
+            print("The hero defeated the boss! How noble.")
+        else:
+            print("The hero was defeated by the boss. womp womp")
+>>>>>>> Stashed changes
     else:
-        print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
+        print(f"\nThe hero has been defeated by goblins. Embarrassing!")
 
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")

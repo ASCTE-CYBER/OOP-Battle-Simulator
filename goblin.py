@@ -1,15 +1,8 @@
-import random
+from enemy import Enemy
 
-class Goblin:
-    """
-    This is our goblin blueprint 
-    
-    Attributes:
-        name: Awe, it has a name? How cute!
-        health: The current health value 
-        attack_power: How much health will be drained from opponent if hit
-    """
+class Goblin(Enemy):
     def __init__(self, name):
+<<<<<<< Updated upstream
         self.name = name
         self.health = 100
         self.attack_power = random.randint(5, 15)
@@ -24,3 +17,7 @@ class Goblin:
 
     def is_alive(self):
         return self.health > 0
+=======
+        super().__init__(name)
+        self.health = 80
+>>>>>>> Stashed changes
