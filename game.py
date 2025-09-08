@@ -1,29 +1,57 @@
 import random
-from goblin import Goblin
+from Orc import Orc
+from Goblin import Goblin
 from hero import Hero
+
+
+def startBossFight(hero):
+    boss = Orc("Grommash the Destroyer")
+    while boss.is_alive() and hero.is_alive():
+        damage = hero.strike()
+        print(f"Hero attacks {boss.name} for {damage} damage!")
+        boss.take_damage(damage)
+        if random.randint(1, 10) == 1:
+            hero.heal()
+            print("Hero uses healing power!")
+
+        if boss.is_alive():
+            damage, strengthReduction = boss.attack()
+            print(f"{boss.name} attacks hero for {damage} damage!")
+            hero.strength = max(1, hero.strength - strengthReduction)
+            hero.receive_damage(damage)
+        else:
+            print(f"{boss.name} has been defeated! ༼ ᕤ◕◡◕ ༽ᕤ")
+
 
 def main():
     print("Welcome to the Battle Arena!")
     print("༼ ᓄºل͟º ༽ᓄ   ᕦ(ò_óˇ)ᕤ")
 
     # Create a hero
-    hero = Hero("Aragorn")
+    hero = Hero("Hornet")
 
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
-    goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
+    goblins = [Goblin(f"Goblin {i+1}") for i in range(
+        random.randint(3, 5)
+        )]
 
     # Keep track of how many goblins were defeated
     defeated_goblins = 0
+    total_damage = 0
+    rounds = 0
 
-    # Battle Loop 
+    # Battle Loop
     while hero.is_alive() and any(goblin.is_alive() for goblin in goblins):
         print("\nNew Round!")
-        
+        rounds += 1
+
         # Hero's turn to attack
-        target_goblin = random.choice([goblin for goblin in goblins if goblin.is_alive()])
+        target_goblin = random.choice([goblin for goblin in goblins
+                                       if goblin.is_alive()])
         damage = hero.strike()
         print(f"Hero attacks {target_goblin.name} for {damage} damage!")
         target_goblin.take_damage(damage)
+        total_damage += damage
 
         # Check if the target goblin was defeated
         if not target_goblin.is_alive():
@@ -36,15 +64,29 @@ def main():
                 damage = goblin.attack()
                 print(f"{goblin.name} attacks hero for {damage} damage!")
                 hero.receive_damage(damage)
+                total_damage += damage
 
     # Determine outcome
     if hero.is_alive():
-        print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
+        print("\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
+        print(f"\nRounds: {rounds}")
+        print(f"\nTotal Damage: {total_damage}")
+        startBossFight(hero)
+        if hero.is_alive():
+            print("\nThe hero has triumphed over the boss and beat the game!"
+                  "༼ ᕤ◕◡◕ ༽ᕤ")
+            print(f"\nRounds: {rounds}")
+            print(f"\nTotal Damage: {total_damage}")
+        else:
+            print("\nThe hero was defeated by the boss. Game Over. (｡•́︿•̀｡)")
+            print(f"\nRounds: {rounds}")
+            print(f"\nTotal Damage: {total_damage}")
     else:
-        print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
+        print("\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
+        print(f"\nRounds: {rounds}")
+        print(f"\nTotal Damage: {total_damage}")
+        print(f"\nGoblins Defeated: {defeated_goblins}\n")
 
-    # Final tally of goblins defeated
-    print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")
 
 if __name__ == "__main__":
     main()
