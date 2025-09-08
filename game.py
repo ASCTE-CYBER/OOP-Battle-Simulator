@@ -1,16 +1,20 @@
 import random
 from goblin import Goblin
 from hero import Hero
+from boss import Tarrasque
+from time import sleep
 
 def main():
     print("Welcome to the Battle Arena!")
     print("༼ ᓄºل͟º ༽ᓄ   ᕦ(ò_óˇ)ᕤ")
 
     # Create a hero
-    hero = Hero("Aragorn")
+    hero = Hero("CHONCKY BOI")
+    herohealthstart=hero.health
 
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
-    goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
+    goblins = [Goblin(f"Jeremy {i+1}","purple") for i in range(3)]
+
 
     # Keep track of how many goblins were defeated
     defeated_goblins = 0
@@ -24,6 +28,8 @@ def main():
         damage = hero.strike()
         print(f"Hero attacks {target_goblin.name} for {damage} damage!")
         target_goblin.take_damage(damage)
+        turnG=True
+        
 
         # Check if the target goblin was defeated
         if not target_goblin.is_alive():
@@ -36,6 +42,7 @@ def main():
                 damage = goblin.attack()
                 print(f"{goblin.name} attacks hero for {damage} damage!")
                 hero.receive_damage(damage)
+                turnH=True
 
     # Determine outcome
     if hero.is_alive():
@@ -45,6 +52,50 @@ def main():
 
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")
+    print("You find a health potion and heal to full!!!!")
+    hero.health=herohealthstart
+    sleep(5)
+    print(f"But you hear a rumbling")
+    print("")
+    print("YOU SEE A TARRASQUE")
+    boss=Tarrasque("Terry")
+    battle=True
+    while battle==True:
+        heroatk=random.choice("s" "pr")
+        if heroatk=="s":
+            damage=hero.strike()
+            print("You strike him YES!")
+            print(" ")
+        else:
+            hero.heal()
+            print('You heal and gain health')
+            print(f"Your health is now  {hero.health}")
+            print(" ")
+        boss.take_damage(damage)
+        print(" ")
+        bossatk=random.choice("b" "c" "t")
+        if bossatk=="b":
+            damage=boss.bite()
+            print("He bites you!! OH NO")
+            print(" ")
+        elif bossatk=="c":
+            damage=boss.claw()
+            print("HE SLASHES AT YOU OH NOOOOOO")
+            print(" ")
+        else:
+            damage=boss.tail()
+            print("He HITS YOU WITH HIS TAIL OH NOOOOOOOOOOOOOOOOOOOO:(")
+            print(" ")
+        hero.receive_damage(damage)
+        print(" ")
+        if not hero.is_alive():
+            print("You have been defeated")
+            battle=False
+        elif not boss.is_alive():
+            print("YOU WON!!!!!!!")
+            battle=False
+
+
 
 if __name__ == "__main__":
     main()
