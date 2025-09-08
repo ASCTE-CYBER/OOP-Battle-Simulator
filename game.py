@@ -2,13 +2,14 @@ import random
 from goblin import Goblin
 from hero import Hero
 from enemy import Enemy
+from boss import boss
 
 def main():
     print("Welcome to the Battle Arena!")
     print("༼ ᓄºل͟º ༽ᓄ   ᕦ(ò_óˇ)ᕤ")
 
     # Create a hero
-    hero = Hero("Alexios")
+    hero = Hero("Prince")
 
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
     goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
@@ -50,20 +51,28 @@ def main():
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")
 
-
-    if hero.is_alive:
+    bossround = 0
+    brute=boss("Dark Prince")
+    if hero.is_alive and brute.is_alive():
         print("Boss Fight Time!!")
-        brute=Enemy("MegaKnight")
         while hero.is_alive and brute.is_alive():
+            bossround=bossround+1
+            print("Round "+ str(bossround))
             damage=hero.strike()
-            brute.take_damage
+            brute.take_damage(damage)
             print(f"{hero.name} attacks {brute.name} for {damage} damage!")
-            if hero.is_alive():
+            if hero.health < 0:
+                print(f"{brute.name} has conquered {hero.name}")
+            elif brute.health < 0:
+                print(f"{hero.name} has conquered {brute.name}")
+            else:
                 damage=brute.attack()
-                hero.receive_damage
-                print(f"{brute.name} attacks {hero.name} for {damage} damage!")
-            return hero.is_alive()
-            
+                hero.receive_damage(damage)
+                if hero.health < 0:
+                    print(f"{brute.name} has conquered {hero.name}")
+                if brute.health < 0:
+                    print(f"{hero.name} has conquered {brute.name}")
+                    print(f"{brute.name} attacks {hero.name} for {damage} damage!")     
 
 
 if __name__ == "__main__":
