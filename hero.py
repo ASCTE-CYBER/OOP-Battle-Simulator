@@ -16,11 +16,9 @@ class Hero:
     
     def __init__(self, name):
         self.name = name
-        self.health = 125
+        self.health = 78293
         self.attack_power = random.randint(1, 20)
-        #TODO Set the hero's name.
-        #TODO Set the hero's health. You might give the hero more health than a goblin.
-        #TODO Set the hero's attack power. Should it be more consistent than the goblin's?
+
     
 
     def strike(self):
@@ -29,11 +27,11 @@ class Hero:
     
     def receive_damage(self, damage):
         self.health -= damage
-        print(f"{self.name} takes {damage} damage. Health is now {self.health}.")
-        if self.health < 0:
-            is_alive = False
-        # TODO Implement take_damage
-        # TODO We should prevent health from going into the NEGATIVE
+        turnH=True
+        while self.health>=0 and turnH==True:
+            self.health-=damage
+            print(f"{self.name} takes {damage} damage. Health is now {self.health}.")
+            turnH=False
     
     #TODO define is_alive
     def is_alive(self):
