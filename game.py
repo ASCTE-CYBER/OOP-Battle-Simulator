@@ -1,5 +1,5 @@
 from goblin import Goblin
-
+from hero import Hero
 
 ARENA_NAME = "Goblet of Fire"
 
@@ -10,15 +10,25 @@ def main():
     print("༼ ᓄºل͟º ༽ᓄ   ᕦ(ò_óˇ)ᕤ")
     print("The gates open ready for battle...")
 
-    goblin = Goblin("Harry Potter")
+    goblin = Goblin("Ron Weasley")
 
     print(f"{goblin.name} enters the arena with {goblin.health} health.")
 
-    goblin2 = Goblin("Cedric Diggory")
+    goblintwo = Goblin("Cedric Diggory")
     
-    print(f"{goblin.name} enters the arena with {goblin.health} health.")
+    print(f"{goblintwo.name} enters the arena with {goblintwo.health} health.")
     print("But no wizard has answered the call... yet.")
 
 
 if __name__ == "__main__":
+    HarryPotter = Hero("Harry Potter")
+    HarryPotter.battle_cry()
+    goblintwo = Goblin("Cedric Diggory")
+    print(f"{HarryPotter} enters the arena with {HarryPotter} health.")
+    heroAttack = HarryPotter.attack()
+    goblintwo.health - heroAttack
+    goblinAttack = goblintwo.attack()
+    HarryPotter.take_damage(goblinAttack)
+
     main()
+    
