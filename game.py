@@ -3,6 +3,18 @@ from hero import Hero
 
 ARENA_NAME = "Goblet of Fire"
 
+def battle(hero: Hero, enemy: Goblin):
+    while hero.is_alive() and enemy.is_alive():
+        hero_damage = hero.attack()
+        enemy.take_damage(hero_damage)
+
+        if enemy.is_alive():
+            enemy_damage = enemy.attack()
+            hero.take_damage(enemy_damage)
+    if hero.is_alive():
+        print(f"{hero.name} wins!")
+    else:
+        print(f"{enemy.name} wins!")  
 
 def main():
     """Open the arena and introduce its first opponent."""
@@ -17,18 +29,15 @@ def main():
     goblintwo = Goblin("Cedric Diggory")
     
     print(f"{goblintwo.name} enters the arena with {goblintwo.health} health.")
-    print("But no wizard has answered the call... yet.")
+    print("The wizard Harry Potter has been called for battle!")
 
-
-if __name__ == "__main__":
     HarryPotter = Hero("Harry Potter")
     HarryPotter.battle_cry()
-    goblintwo = Goblin("Cedric Diggory")
-    print(f"{HarryPotter} enters the arena with {HarryPotter} health.")
-    heroAttack = HarryPotter.attack()
-    goblintwo.health - heroAttack
-    goblinAttack = goblintwo.attack()
-    HarryPotter.take_damage(goblinAttack)
 
+    goblintwo = Goblin("Cedric Diggory")
+    battle(HarryPotter, goblin)
+
+if __name__ == "__main__":
     main()
+
     

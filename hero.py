@@ -9,6 +9,7 @@ class Hero:
 
     def attack(self):
         return random.randint(1, self.attack_power)
+        
 
     def take_damage(self, damage):
             self.health = max(0, self.health - damage)
@@ -18,6 +19,6 @@ class Hero:
           return self.health > 0
 
     def battle_cry(self):
-         print ("wingardium leviosa")
+         print ("wingardium leviosa🪄")
 
 
